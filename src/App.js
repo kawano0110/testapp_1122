@@ -1,25 +1,59 @@
-import logo from './logo.svg';
 import './App.css';
+import Home from './Home';
+import Weather  from './Weather';
+import Slider from './Slider';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Link,
+  Outlet
+  } from "react-router-dom";
+
+
+  function NotMatch(){
+    return(
+      <>
+      <h2>NotMatch</h2>
+      </>
+    );
+  }
+   
+  
+  function Navigation() {
+    return (
+      <div>
+        <nav>
+          <ul>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/Weather">Weather</Link></li>
+            <li><Link to="/Dashboard">Dashboard</Link></li>
+          </ul>
+        </nav>
+        <hr />
+        <Outlet />
+      </div>
+    );
+   }
+   
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Navigation />}>
+          <Route index element={<Home />} />
+          <Route path="weather" element={<Weather />} />
+          <Route path="dashboard" element={<Dashboard />} />
+          
+        </Route>
+      </Routes>
+    </BrowserRouter>
+      
     </div>
   );
 }
+
 
 export default App;
