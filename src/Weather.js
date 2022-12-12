@@ -29,6 +29,12 @@ function Weather() {
                     Learn React
                 </a>
             </header>
+            <p>今日の天気は</p>
+            <select onChange={handleChange}>
+            <option value="tokyo">東京</option>
+            <option value="osaka">大阪</option>
+            <option value="sapporo">札幌</option>
+            </select>
             <footer>
                 <p>Copyright © Inc. All Rights Reserved.</p>
             </footer>
